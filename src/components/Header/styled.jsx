@@ -46,16 +46,24 @@ export const Title = styled.h1`
     font-weight: 500;
 `;
 
-export const GithubLogo = styled.i.attrs(() => ({
-    className: 'bi bi-github',
+export const GithubLogoLink = styled.a.attrs(() => ({
+    'href':'https://github.com/TomNikoloff/react-weather-app',
 }))`
-
     transition: 0.2s ease-in-out;
 
     &:hover {
         transform: translateY(-2px);
-        color: var(--tn-primary);
         cursor: pointer;
+    }
+`;
+
+export const GithubLogo = styled.i.attrs(() => ({
+    className: 'bi bi-github',
+}))`
+    transition: 0.2s ease-in-out;
+    
+    &:hover {
+        color: var(--tn-primary);
     }
 `;
 

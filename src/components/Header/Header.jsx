@@ -6,6 +6,7 @@ import {
     LinkTitleContainer,
     Title,
     TitleWrap,
+    GithubLogoLink,
     GithubLogo
 } from './styled';
 
@@ -18,7 +19,9 @@ export default function Header() {
                 </PortfolioLogoLink>
                 <Title>React - <TitleWrap />Weather App</Title>
             </LinkTitleContainer>
-            <GithubLogo />          
+            <GithubLogoLink>
+                <GithubLogo /> 
+            </GithubLogoLink>
         </HeaderContainer>
     );
 }
