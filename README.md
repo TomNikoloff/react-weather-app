@@ -1,8 +1,23 @@
-# React + Vite
+# React Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+![react-weather-app logo](https://raw.githubusercontent.com/TomNikoloff/react-weather-app/master/src/assets/images/react-weather-app.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Weather App built using React. [Live Demo](https://tom-nikoloff-react-weather.netlify.app/).
+
+### Tech Stack
+
+---
+
+React, Styled Components, Open Weather API, Netlify, GeoLocation API
+
+### Features
+
+---
+
+- Weather forecast for any city/town.
+- 3 Hourly forecast.
+- Extended 5 day forecast.
+- Toggle for Celcius to Fahrenheit and vice versa convertion.
+- Find user location weather by utilizing Geolocation API.
