@@ -47,6 +47,7 @@ body {
 #root {
   height: 100%;
   margin: auto 0;
+  position: relative;
 }
 
 /* Custom Scrollbar - START */

@@ -3,6 +3,7 @@ import WeatherIcon from "../../utils/weatherIcon";
 import { dateBuilder } from '../../utils/dateUtils';
 import { kmToMile } from '../../utils/unitConversion';
 import Temperature from '../../utils/temperature';
+import ToggleSwitch from '../ui/ToggleSwitch/ToggleSwitch';
 import { 
     SectionTitle 
 } from '../../app.styled';
@@ -46,12 +47,7 @@ const CurrentWeather = ({weather, onToggle, tempUnit}) => {
                         <SectionTitle className="uk-text-large">
                             Current Weather
                         </SectionTitle>
-                        <div>
-                            <UnitSwitcher htmlFor="temp_type">
-                                <input type="checkbox" id="temp_type" checked={checked} onChange={handleUnitChange} />
-                                {(!checked) ? (<span className='celcius'>C</span>) : (<span className='fahrenheit'>F</span>)}
-                            </UnitSwitcher>
-                        </div>
+                        <ToggleSwitch checked={checked} handleUnitChange={handleUnitChange} />
                     </div>
                     <div className='uk-grid uk-margin-remove'>
                         <div className='uk-padding-small uk-width-2-3@s'>

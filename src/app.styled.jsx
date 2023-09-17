@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageContainer = styled.div.attrs(() => ({
     className: 'uk-container uk-position-relative',
 }))`
-    min-height: 100vh;
+    
 `;
 
 export const AppContainer = styled.main.attrs(() => ({
@@ -52,4 +52,20 @@ export const SectionTitle = styled.h3`
     > :last-child {
         margin-left: 10px;
     }
+`;
+
+export const Overlay = styled.div.attrs(() => ({
+    id:'loading_overlay',
+    className:'uk-hidden'
+}))`
+    position: absolute;
+    top: 0;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

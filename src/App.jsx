@@ -4,10 +4,12 @@ import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import Forecast from './components/Forecast/Forecast';
 import FiveDayForecast from './components/FiveDayForecast/FiveDayForecast';
 import Footer from './components/Footer/Footer';
+import Spinner from './components/ui/Spinner/Spinner';
 import { fetchWeatherData } from './hooks/weather';
 import { 
     PageContainer,
-    AppContainer
+    AppContainer,
+    Overlay,    
 } from './app.styled';
 import { useState, useEffect } from 'react';
 
@@ -34,22 +36,30 @@ const App = () => {
             fetchWeatherData(location)
             .then(result => {
                 setWeather(result);
+            })
+            .catch((error) => {
+                console.log(error)
             });
         }
-    }, [])
+    }, []);
     
 
     return (
-        <PageContainer>
-            <Header />
-            <AppContainer>
-                <Search onSearch={(weather) => setWeather(weather)}/>
-                <CurrentWeather weather={weather} onToggle={(tempUnit) => setTempUnit(tempUnit)} tempUnit={tempUnit} />
-                <Forecast weather={weather} tempUnit={tempUnit} />
-                <FiveDayForecast weather={weather} tempUnit={tempUnit} />
-            </AppContainer>
-            <Footer />
-        </PageContainer>
+        <>
+            <PageContainer>
+                <Header />
+                <AppContainer>
+                    <Search onSearch={(weather) => setWeather(weather)}/>
+                    <CurrentWeather weather={weather} onToggle={(tempUnit) => setTempUnit(tempUnit)} tempUnit={tempUnit} />
+                    <Forecast weather={weather} tempUnit={tempUnit} />
+                    <FiveDayForecast weather={weather} tempUnit={tempUnit} />
+                </AppContainer>
+                <Footer />
+            </PageContainer>
+            <Overlay>
+                <Spinner />
+            </Overlay>
+        </>
     );
 };
 
