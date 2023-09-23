@@ -13,5 +13,5 @@ React, Styled Components, Open Weather API, Netlify, GeoLocation API
 - Weather forecast for any city/town.
 - 3 Hourly forecast.
 - Extended 5 day forecast.
-- Toggle for Celcius to Fahrenheit and vice versa convertion.
-- Find user location weather by utilizing Geolocation API.
+- Toggle for Celsius to Fahrenheit and vice versa.
+- Find the user location weather by utilizing Geolocation API.
