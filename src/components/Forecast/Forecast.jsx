@@ -13,7 +13,7 @@ const Forecast = ({weather, tempUnit}) => {
 
     return (
         <>
-            {(typeof weather.list != "undefined") ? (
+            {weather.list && (
                 <ForecastContainer>
                     <SectionTitle>
                         <span uk-icon="clock"></span> 
@@ -27,17 +27,15 @@ const Forecast = ({weather, tempUnit}) => {
                                 index={i}
                                 dateTime={item.dt}
                                 temp={item.main.temp}
-                                high={item.main.temp_max}
-                                low={item.main.temp_min}
                                 weatherCode={item.weather[0].id}
-                                main={item.weather[0].main}
                                 tempUnit={tempUnit}
+                                //main={item.weather[0].main}
                             />
                             );
                         })}
                     </ForecastItems>
                 </ForecastContainer> 
-            ) : ('')}
+            )}
         </>
     );
 }

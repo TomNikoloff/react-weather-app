@@ -26,15 +26,8 @@ const FiveDayForecast = ({weather, tempUnit}) =>{
             let obj = {
                 date: nextDateTime.getDate(),
                 day: days[nextDateTime.getDay()],
-                temp: {
-                    min: 0,
-                    max: 0
-                },
-                weather: {
-                    type: '',
-                    description: '',
-                    code: ''
-                }
+                temp: { min: 0, max: 0 },
+                weather: { type: '', description: '', code: '' }
             }
 
             fiveDayForecast.push(obj);
@@ -44,51 +37,52 @@ const FiveDayForecast = ({weather, tempUnit}) =>{
         let prevDate = new Date( Date.now() + 1 * 24 * 60 * 60 * 1000).getDate();
         let first = true;
 
-        weather.list.forEach((item, index) => {
+        if(weather.list){
+            weather.list.forEach((item) => {
 
-            let dateTime = new Date(item.dt * 1000);
-            let date = dateTime.getDate();
+                let dateTime = new Date(item.dt * 1000);
+                let date = dateTime.getDate();
 
-            if(date !== todaysDate){
+                if(date !== todaysDate){
 
-                let temp = Math.round(item.main.temp);
-                let code = item.weather[0].id;
-                let type = item.weather[0].main;
-                let description = item.weather.description;
+                    let temp = Math.round(item.main.temp);
+                    let code = item.weather[0].id;
+                    let type = item.weather[0].main;
+                    let description = item.weather.description;
 
-                if(first){
-                    fiveDayForecast[count].temp.min = temp;
-                    fiveDayForecast[count].temp.max = temp;
-                    first = false;
-                } else {
-
-                    if(date !== prevDate){
-                        prevDate = date;
-                        count++;
+                    if(first){
                         fiveDayForecast[count].temp.min = temp;
                         fiveDayForecast[count].temp.max = temp;
+                        first = false;
+                    } else {
+
+                        if(date !== prevDate){
+                            prevDate = date;
+                            count++;
+                            fiveDayForecast[count].temp.min = temp;
+                            fiveDayForecast[count].temp.max = temp;
+                        }
+
+                        if(temp < fiveDayForecast[count].temp.min){
+                            fiveDayForecast[count].temp.min = temp;
+                        }
+                        if(temp > fiveDayForecast[count].temp.max){
+                            fiveDayForecast[count].temp.max = temp;
+                        }
                     }
 
-                    if(temp < fiveDayForecast[count].temp.min){
-                        fiveDayForecast[count].temp.min = temp;
+                    if(item.dt_txt.includes('12:00:00')){
+                        fiveDayForecast[count].weather.code = code;
+                        fiveDayForecast[count].weather.type = type;
+                        fiveDayForecast[count].weather.description = description;
+                    } else if(fiveDayForecast[count].weather.type == ''){
+                        fiveDayForecast[count].weather.code = code;
+                        fiveDayForecast[count].weather.type = type;
                     }
-                    if(temp > fiveDayForecast[count].temp.max){
-                        fiveDayForecast[count].temp.max = temp;
-                    }
+
                 }
-
-                if(item.dt_txt.includes('12:00:00')){
-                    fiveDayForecast[count].weather.code = code;
-                    fiveDayForecast[count].weather.type = type;
-                    fiveDayForecast[count].weather.description = description;
-                } else if(fiveDayForecast[count].weather.type == ''){
-                    fiveDayForecast[count].weather.code = code;
-                    fiveDayForecast[count].weather.type = type;
-                }
-
-            }
-
-        });
+            });
+        }
 
         return fiveDayForecast;
 
@@ -96,7 +90,7 @@ const FiveDayForecast = ({weather, tempUnit}) =>{
 
     return (
         <>
-            {(typeof weather.list != "undefined") ? (
+            {weather.list && (
                 <ForecastContainer>
                     <SectionTitle>
                         <span uk-icon="calendar"></span> 
@@ -118,7 +112,7 @@ const FiveDayForecast = ({weather, tempUnit}) =>{
                     })}
                     </ForecastItems>
                 </ForecastContainer> 
-            ) : ('')}
+            )}
         </>
     );
 

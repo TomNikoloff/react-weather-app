@@ -6,13 +6,14 @@ import {
     SearchButton,
     LocationButton
 } from './styled';
+
 const Search = ({onSearch}) => {
 
     const [query, setQuery] = useState('');
 
-    const [isLoading, setIsLoading] = useState(false);
+    //const [isLoading, setIsLoading] = useState(false);
 
-    const handleButtonPress = (e) => {
+    const handleButtonPress = () => {
 
         if(query !== ''){
 
@@ -31,7 +32,7 @@ const Search = ({onSearch}) => {
 
     }
 
-    const handleKeyPress = evt => {
+    const handleKeyPress = (evt) => {
 
         if(evt.key === "Enter"){
 
@@ -50,7 +51,7 @@ const Search = ({onSearch}) => {
 
     }
 
-    const handleLocation = (e) => {
+    const handleLocation = () => {
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
@@ -81,12 +82,12 @@ const Search = ({onSearch}) => {
 
     const displayLoading = () => {
 
-        loadingOverlay.classList.remove('uk-hidden');
+        loadingOverlay ? loadingOverlay.classList.remove('uk-hidden') : console.error('loadingOverlay is null');
 
     }
 
     const hideLoading = () => {
-        loadingOverlay.classList.add('uk-hidden');
+        loadingOverlay ? loadingOverlay.classList.add('uk-hidden') : console.error('loadingOverlay is null');
     }
 
     return (

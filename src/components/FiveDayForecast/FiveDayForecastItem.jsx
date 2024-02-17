@@ -5,22 +5,22 @@ import {
 } from './styled';
 import Temperature from "../../utils/temperature";
 
-const FiveDayForecastItem = (props) =>{
+const FiveDayForecastItem = ({day, weatherCode, main, high, low, tempUnit}) =>{
 
     return (
         <>
             <ForecastItemContainer>
-                <p className="uk-text-center">{props.day}</p>
+                <p className="uk-text-center">{day}</p>
                 <div>
-                    <WeatherIcon code={props.weatherCode} />
+                    <WeatherIcon code={weatherCode} />
                 </div>
                 <p>
-                    {props.main}
+                    {main}
                 </p>
                 <HighLowContainer>
-                    <Temperature value={Math.round(props.high)} tempUnit={props.tempUnit} />
+                    <Temperature value={Math.round(high)} tempUnit={tempUnit} />
                     <span>/</span> 
-                    <Temperature value={Math.round(props.low)} tempUnit={props.tempUnit} />
+                    <Temperature value={Math.round(low)} tempUnit={tempUnit} />
                 </HighLowContainer>
             </ForecastItemContainer>
         </>

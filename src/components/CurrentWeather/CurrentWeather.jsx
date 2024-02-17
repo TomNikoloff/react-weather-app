@@ -41,7 +41,7 @@ const CurrentWeather = ({weather, onToggle, tempUnit}) => {
 
     return (
         <>
-            {(typeof weather.list != "undefined") ? (
+            {(weather.list?.length) ? (
                 <WeatherContainer>
                     <div className='uk-flex uk-flex-between'>
                         <SectionTitle className="uk-text-large">

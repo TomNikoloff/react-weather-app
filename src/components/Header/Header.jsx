@@ -10,7 +10,7 @@ import {
     GithubLogo
 } from './styled';
 
-export default function Header() {
+const Header = () => {
     return (
         <HeaderContainer>
             <LinkTitleContainer>
@@ -25,3 +25,5 @@ export default function Header() {
         </HeaderContainer>
     );
 }
+
+export default Header;

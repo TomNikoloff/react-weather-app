@@ -2,7 +2,7 @@ import WeatherIcon from "../../utils/weatherIcon";
 import { ForecastItemContainer } from './styled';
 import Temperature from "../../utils/temperature";
 
-const ForecastItem = (props) => {
+const ForecastItem = ({index, dateTime, weatherCode, temp, tempUnit/*, main*/}) => {
 
     const convertTimeStamp = (t) => {
 
@@ -17,15 +17,15 @@ const ForecastItem = (props) => {
 
     return (
         <>
-            {(props.index < 9) ? (
+            {index < 9 && (
                 <ForecastItemContainer>
-                    {(props.index == 0) ? (
+                    {(index == 0) ? (
                         <p className="uk-text-center">Now</p>
                     ) : (
-                        <p className="uk-text-center">{convertTimeStamp(props.dateTime)}</p>
+                        <p className="uk-text-center">{convertTimeStamp(dateTime)}</p>
                     )}
                     <div>
-                        <WeatherIcon code={props.weatherCode} />
+                        <WeatherIcon code={weatherCode} />
                     </div>
                     {/*
                     <p>
@@ -33,10 +33,10 @@ const ForecastItem = (props) => {
                     </p>
                     */}
                     <p className="uk-text-center">
-                        <Temperature value={Math.round(props.temp)} tempUnit={props.tempUnit} />
+                        <Temperature value={Math.round(temp)} tempUnit={tempUnit} />
                     </p>
                 </ForecastItemContainer>
-            ) : ('')}
+            )}
         </>
     )
 }
