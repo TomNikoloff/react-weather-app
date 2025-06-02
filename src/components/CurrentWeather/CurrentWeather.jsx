@@ -112,12 +112,14 @@ const CurrentWeather = ({weather, onToggle, tempUnit}) => {
                 </WeatherContainer>
             ) : (
                 <HelperContainer>
-                    <ErrorContainer>
-                        <ErrorIcon />
-                        <ErrorMessage>
-                            {(weather.cod !== "") ? ('Code ' + weather.cod +  ' : ' +  weather.message + '.') : ('Something went wrong!')}
-                        </ErrorMessage>
-                    </ErrorContainer>
+                    {weather.cod && weather.cod !== 200 && weather.message && (
+                        <ErrorContainer>
+                            <ErrorIcon />
+                            <ErrorMessage>
+                                {(weather.cod !== "") ? ('Code ' + weather.cod +  ' : ' +  weather.message + '.') : ('Something went wrong!')}
+                            </ErrorMessage>
+                        </ErrorContainer>
+                    )}
                     <InfoContainer>
                         <InfoIcon />
                         <InfoMessage>
